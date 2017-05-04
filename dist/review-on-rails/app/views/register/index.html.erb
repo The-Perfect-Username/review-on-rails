@@ -1,0 +1,8 @@
+<h1>Register#index</h1>
+<%= form_for @registration, url: "/register/run", method: "post" do |r| %>
+Name <%= r.text_field :name %><br/>
+Email <%= r.email_field :email %><br/>
+Username <%= r.text_field :username %><br/>
+Password <%= r.password_field :password %><br/>
+<%= submit_tag("Submit") %>
+<% end %>
