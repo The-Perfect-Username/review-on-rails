@@ -1,8 +1,26 @@
-<h1>Register#index</h1>
-<%= form_for @registration, url: "/register/run", method: "post" do |r| %>
-Name <%= r.text_field :name %><br/>
-Email <%= r.email_field :email %><br/>
-Username <%= r.text_field :username %><br/>
-Password <%= r.password_field :password %><br/>
-<%= submit_tag("Submit") %>
-<% end %>
+<section class="container">
+
+    <%= form_for @registration, url: "/register/run", method: "post" do |r| %>
+        <h3>Register an account</h3>
+        <div class="form-group">
+            <%= label_tag('Your name') %>
+            <%= r.text_field :name, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= label_tag('Email') %>
+            <%= r.email_field :email, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= label_tag('Username') %>
+            <%= r.text_field :username, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= label_tag('Password') %>
+            <%= r.password_field :password, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= submit_tag("Submit", :class=> "btn btn-success") %>
+        </div>
+
+    <% end %>
+</section>
