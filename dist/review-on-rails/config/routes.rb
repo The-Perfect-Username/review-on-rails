@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+    get 'post', to: "post#index"
+    get 'post/:id', to: "post#item"
+    post 'post/create', to: "post#create"
+    post 'post/destroy', to: "post#destory"
+
     resources :users
     get 'register', to: "register#index"
     post 'register/run', to: "register#run"
