@@ -1,0 +1,19 @@
+<% posts.each do |x| %>
+<div class="review list-display">
+    <a href="/post/<%= x['id'] %>">
+        <div class="review-header">
+            <h3><%= x['title'] %></h3>
+            <ul>
+                <li><%= x['username'] %></li>
+                <li><%= x['created_at'] %></li>
+                <li><%= x['rating'] %></li>
+            </ul>
+        </div>
+        <div class="review-body">
+            <p>
+                <%= x['post'] %>
+            </p>
+        </div>
+    </a>
+</div>
+<% end %>

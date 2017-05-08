@@ -40,7 +40,7 @@ class PostController < ApplicationController
             return false
         end
 
-        len = str.strip!.length
+        len = str.length
         return len <= 100 && len > 0
     end
 
@@ -49,15 +49,11 @@ class PostController < ApplicationController
             return false
         end
 
-        len = str.strip!.length
+        len = str.length
         return len <= 1000 && len > 0
     end
 
     def rating_valid?(rate)
-        if rate == nil
-            return false
-        end
-
-        return rate.between?(0,6)
+        return rate.to_i.between?(0,6)
     end
 end
