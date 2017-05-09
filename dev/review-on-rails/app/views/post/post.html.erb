@@ -11,5 +11,6 @@
     </div>
     <div id="comments">
         <%= render partial: "commentForm", :locals => {:comment => @comment} %>
+        <%= render partial: "comments", :locals => {:comments => @comments} %>
     </div>
 </section>

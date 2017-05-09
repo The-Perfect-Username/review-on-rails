@@ -1,6 +1,9 @@
 <div id="commentFormContainer">
+    <h5 id="commentCount"><%= @numberOfComments == 1 ? "1 comment" : "#{@numberOfComments} comments"  %></h5>
     <% if flash[:error] %>
-        <%= flash[:error] %>
+        <div class="alert alert-danger">
+            <%= flash[:error] %>
+        </div>
     <% end %>
     <%= form_for comment, url: "/comment/create", method: "post" do |c| %>
         <%= c.hidden_field :post_id, :value => params[:id] %>
