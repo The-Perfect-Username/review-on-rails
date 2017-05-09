@@ -1,17 +1,17 @@
 <% posts.each do |x| %>
 <div class="review list-display">
-    <a href="/post/<%= x['id'] %>">
+    <a href="/post/<%= x.id %>">
         <div class="review-header">
-            <h3><%= x['title'] %></h3>
+            <h3><%= x.title %></h3>
             <ul>
-                <li><%= x['username'] %></li>
-                <li><%= x['created_at'] %></li>
-                <li><%= x['rating'] %></li>
+                <li><%= x.username %></li>
+                <li><%= x.created_at %></li>
+                <li><%= render partial: "stars", :locals => {:rate => x.rating} %></li>
             </ul>
         </div>
         <div class="review-body">
             <p>
-                <%= x['post'] %>
+                <%= if x.post.length <= 200 then x.post else "#{x.post[0..200]}..." end %>
             </p>
         </div>
     </a>

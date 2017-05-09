@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
     get 'post', to: "post#index"
-    get 'post/:id', to: "post#item"
+    get 'post/:id', to: "post#post"
     post 'post/create', to: "post#create"
     post 'post/destroy', to: "post#destory"
 

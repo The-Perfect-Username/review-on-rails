@@ -1,0 +1,12 @@
+<section id="reviewPage" class="container">
+    <h2><%= @post.title %></h2>
+    <ul>
+        <li class="username"><%= @post.username %></li>
+        <li class="date-time"><%= @post.created_at %></li>
+        <li class="rating"><%= render partial: "stars", :locals => {:rate => @post.rating} %></li>
+    </ul>
+    <hr />
+    <div class="post">
+        <p><%= simple_format(@post.post) %></p>
+    </div>
+</section>

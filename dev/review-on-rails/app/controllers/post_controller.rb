@@ -3,8 +3,8 @@ class PostController < ApplicationController
       @post = Post.new
   end
 
-  def item
-      @posts = Post.where(id: params[:id])
+  def post
+      @post = Post.joins(:user).select("users.username as username, posts.*").where(id: params[:id]).first
   end
 
   def create

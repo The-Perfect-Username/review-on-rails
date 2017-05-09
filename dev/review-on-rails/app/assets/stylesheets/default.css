@@ -9,11 +9,12 @@ body {
 
 header {
     height: 50px;
-    background: #ff3333;
+    border-bottom: 1px solid #d6d6d6;
 }
 
 main {
-    height: calc(100% - 70px);
+    min-height: calc(100% - 70px);
+    padding: 40px;
 }
 
 #container {
