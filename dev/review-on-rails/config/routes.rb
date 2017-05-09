@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     post 'post/create', to: "post#create"
     post 'post/destroy', to: "post#destory"
 
+    post 'comment/create', to: "comment#create"
+
     resources :users
     get 'register', to: "register#index"
     post 'register/run', to: "register#run"

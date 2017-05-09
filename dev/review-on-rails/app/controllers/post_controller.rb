@@ -5,6 +5,7 @@ class PostController < ApplicationController
 
   def post
       @post = Post.joins(:user).select("users.username as username, posts.*").where(id: params[:id]).first
+      @comment = Comment.new
   end
 
   def create

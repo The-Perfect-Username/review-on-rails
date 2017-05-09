@@ -3,7 +3,7 @@
     <%= form_for @post, url: "/post/create", method: "post" do |p| %>
         <h3>Submit new review</h3>
         <% if flash[:error] %>
-        <%= flash[:error] %>
+            <%= flash[:error] %>
         <% end %>
         <div class="form-group">
             <%= label_tag('Title') %>

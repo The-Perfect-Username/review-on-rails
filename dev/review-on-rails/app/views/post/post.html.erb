@@ -9,4 +9,7 @@
     <div class="post">
         <p><%= simple_format(@post.post) %></p>
     </div>
+    <div id="comments">
+        <%= render partial: "commentForm", :locals => {:comment => @comment} %>
+    </div>
 </section>
