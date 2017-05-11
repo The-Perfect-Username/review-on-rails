@@ -1,0 +1,21 @@
+<section id="container">
+    <div id="accountHeader">
+        <h3><%= @user.username %></h3>
+        <p><%= @user.name %> <%= @user.email %> <%= @user.created_at %></p>
+    </div>
+    <div id="accountNavContainer">
+        <nav>
+            <a class="selected" href="/account/comments">
+                Comments
+                <span class="arrow"></span>
+            </a>
+            <a href="/account/reviews">
+                Reviews
+                <span class="arrow"></span>
+            </a>
+        </nav>
+    </div>
+    <div id="accountBody">
+        <%= render partial: "post/comments", :locals => {:comments => @comments} %>
+    </div>
+</section>

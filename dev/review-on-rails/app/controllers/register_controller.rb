@@ -9,6 +9,7 @@ class RegisterController < ApplicationController
   def run
       @registration = User.new(registration_params)
       if @registration.save
+          session[:user_id] = @registration.id
           redirect_to :controller => 'index', :action => 'index'
       else
           redirect_to :controller => 'register', :action => 'index'

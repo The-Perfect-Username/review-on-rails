@@ -5,6 +5,7 @@ class LoginController < ApplicationController
   def index
       @login = User.new
   end
+  
   def run
       user = User.find_by(username: session_params[:username])
       if user && user.authenticate(session_params[:password])

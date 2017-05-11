@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
-    get 'account', to: "account#index"
-    post 'account/comments/loadmore', to: "account#loadMoreComments"
-    post 'account/reviews', to: "account#reviews"
-    post 'account/comments', to: "account#comments"
+
+    get 'account', to: "user#account"
+    get 'user/:id', to: "user#index"
+    get 'logout', to: "user#logout"
+
+    post 'account/comments/loadmore', to: "user#loadMoreComments"
+    post 'account/reviews', to: "user#reviews"
+    post 'account/comments', to: "user#comments"
 
     get 'post', to: "post#index"
     get 'post/:id', to: "post#post"
