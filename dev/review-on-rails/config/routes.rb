@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+    get 'account', to: "account#index"
+    post 'account/comments/loadmore', to: "account#loadMoreComments"
+    post 'account/reviews', to: "account#reviews"
+    post 'account/comments', to: "account#comments"
+
     get 'post', to: "post#index"
     get 'post/:id', to: "post#post"
     post 'post/create', to: "post#create"

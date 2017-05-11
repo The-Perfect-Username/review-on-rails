@@ -1,0 +1,82 @@
+// Place all the styles related to the Account controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#accountHeader {
+    border: 1px solid #e6e6e6;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0 20px;
+}
+#accountNavContainer {
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+
+    nav {
+
+        display: flex;
+        justify-content: center;
+
+        a {
+            display: inline-block;
+            position: relative;
+            padding: 10px 0;
+            width: 150px;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+
+            &:hover {
+                background: #0099ff;
+                color: #fff;
+            }
+
+            &.selected {
+                background: #0099ff;
+                color: #fff;
+
+                .arrow {
+                    border: 7px solid #fff;
+                    border-top: 7px solid transparent;
+                    border-left: 7px solid transparent;
+                    border-right: 7px solid transparent;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-50%, 1px);
+                }
+            }
+
+        }
+    }
+}
+#accountBody {
+    border: 1px solid #e6e6e6;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 20px;
+
+    .comment {
+        border-bottom: 1px solid #e6e6e6;
+        padding: 10px 0;
+
+        &:last-child {
+            border: none;
+        }
+
+        .comment-header {
+            p {
+                display: inline-block;
+                margin-right: 10px;
+
+                &.username {
+                    font-weight: 600;
+                }
+            }
+        }
+
+    }
+}

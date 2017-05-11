@@ -6,7 +6,7 @@
             <ul>
                 <li><%= x.username %></li>
                 <li><%= x.created_at %></li>
-                <li><%= render partial: "stars", :locals => {:rate => x.rating} %></li>
+                <li><%= render partial: "index/stars", :locals => {:rate => x.rating} %></li>
             </ul>
         </div>
         <div class="review-body">
