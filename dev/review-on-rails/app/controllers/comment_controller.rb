@@ -15,6 +15,13 @@ class CommentController < ApplicationController
         end
     end
 
+    def loadMoreComments
+        @comments = Comment.joins(:user).select("users.username as username,comments.*").where("comments.id < ? AND comments.post_id = ?", params[:comment_id], params[:post_id]).order("comments.id DESC").limit(5)
+        respond_to do |format|
+            format.html { render partial: 'comments', :locals => {:comments => @comments} }
+        end
+    end
+
     private
         def comment_params
             params.require(:comment).permit(:post_id, :comment).merge(:user_id => session[:user_id])

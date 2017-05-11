@@ -6,7 +6,7 @@ class PostController < ApplicationController
   def post
       @post = Post.joins(:user).select("users.username as username, posts.*").where(id: params[:id]).first
       @comment = Comment.new
-      @comments = Comment.joins(:user).select("users.username as username,comments.*").where(post_id: params[:id]).limit(5)
+      @comments = Comment.joins(:user).select("users.username as username,comments.*").where(post_id: params[:id]).order("comments.id DESC").limit(5)
       @numberOfComments = Comment.where(post_id: params[:id]).length
   end
 

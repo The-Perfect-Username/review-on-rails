@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post 'post/destroy', to: "post#destory"
 
     post 'comment/create', to: "comment#create"
+    post '/comments/loadmore', to: "comment#loadMoreComments"
 
     resources :users
     get 'register', to: "register#index"
