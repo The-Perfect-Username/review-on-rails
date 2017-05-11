@@ -9,6 +9,7 @@
         <%= c.hidden_field :post_id, :value => params[:id] %>
         <div class="form-group">
             <%= label_tag('Comment') %>
+            <span id="commentCharacterCounter" class="char-counter"></span>
             <%= c.text_area :comment, :class => "form-control", :rows => 5, :maxlength => 1000 %>
         </div>
         <div class="form-group">
