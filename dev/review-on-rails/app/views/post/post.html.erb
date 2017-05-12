@@ -1,16 +1,26 @@
 <section id="reviewPage" class="container">
     <h2><%= @post.title %></h2>
     <ul>
-        <li class="username"><%= @post.username %></li>
-        <li class="date-time"><%= @post.created_at %></li>
-        <li class="rating"><%= render partial: "stars", :locals => {:rate => @post.rating} %></li>
+        <li class="username">
+            <a href="/user/<%= @post.user_id %>">
+                <%= @post.username %>
+            </a>
+        </li>
+        <li class="date-time">
+            <%= @post.created_at %>
+        </li>
+        <li class="rating">
+            <%= render partial: "stars", :locals => {:rate => @post.rating} %>
+        </li>
     </ul>
     <hr />
     <div class="post">
         <p><%= simple_format(@post.post) %></p>
     </div>
     <div id="comments">
+        <% if session[:user_id] %>
         <%= render partial: "commentForm", :locals => {:comment => @comment} %>
+        <% end %>
         <% unless @comments.empty? %>
         <div id="commentsContainer">
             <%= render partial: "comments", :locals => {:comments => @comments} %>

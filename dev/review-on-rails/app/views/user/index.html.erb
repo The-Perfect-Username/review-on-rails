@@ -5,11 +5,11 @@
     </div>
     <div id="accountNavContainer">
         <nav>
-            <a class="selected" href="/account/comments">
+            <a class="selected" href="/account/comments" rel='<%= @user.id %>'>
                 Comments
                 <span class="arrow"></span>
             </a>
-            <a href="/account/reviews">
+            <a href="/account/reviews" rel='<%= @user.id %>'>
                 Reviews
                 <span class="arrow"></span>
             </a>

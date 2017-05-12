@@ -1,9 +1,9 @@
 <% comments.each do |c| %>
     <div class="comment">
         <div class="comment-header">
-            <p class="username">
+            <a class="username" href="/user/<%= c.user_id %>">
                 <%= c.username %>
-            </p>
+            </a>
             <p class="date-time">
                 <%= c.created_at %>
             </p>

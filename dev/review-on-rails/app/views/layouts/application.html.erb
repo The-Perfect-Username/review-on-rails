@@ -11,10 +11,37 @@
   </head>
 
   <body>
-      <header></header>
+      <header>
+          <div class="header-container">
+              <h4 id="siteTitle">Review on Rails</h4>
+          </div>
+          <nav>
+              <% if session[:user_id] %>
+              <a href="/account">Account</a>
+              <a href="/logout">Logout</a>
+              <% else %>
+              <a href="/register">Register</a>
+              <a href="/login">Login</a>
+              <% end %>
+          </nav>
+      </header>
       <main>
+          <div id="sideBar">
+              <nav>
+                  <a href="/" data-toggle="tooltip" title="Home" data-placement="right">
+                      <i class="fa fa-home" aria-hidden="true"></i>
+                  </a>
+                  <% if session[:user_id] %>
+                  <a href="/post" data-toggle="tooltip" title="Submit review" data-placement="right">
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </a>
+                  <a href="account" data-toggle="tooltip" title="Account" data-placement="right">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                  </a>
+                  <% end %>
+              </nav>
+          </div>
           <%= yield %>
       </main>
-    </footer></footer>
   </body>
 </html>

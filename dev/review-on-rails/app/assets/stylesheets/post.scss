@@ -47,3 +47,16 @@
 
     }
 }
+
+#new_post {
+    width: 800px;
+    margin: 0 auto;
+
+    textarea {
+        resize: vertical;
+    }
+
+    select {
+        width: 100px;
+    }
+}

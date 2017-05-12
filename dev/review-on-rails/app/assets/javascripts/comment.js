@@ -21,7 +21,7 @@ $(document).on('ready page:load', function(){
         }
     });
 
-    $(document).on("click", "#loadMoreComments", function() {
+    $(commentsContainer).on("click", "#loadMoreComments", function() {
         var btn = $(this);
 
         var postId = btn.attr("rel");
@@ -35,7 +35,7 @@ $(document).on('ready page:load', function(){
             error: function(err) {
                 alert(JSON.stringify(err));
             },
-            success: function(res) {
+            complete: function(res) {
                 btn.remove();
                 commentsContainer.append(res);
             }

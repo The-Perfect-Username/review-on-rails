@@ -2,7 +2,9 @@
     <%= form_for @post, url: "/post/create", method: "post" do |p| %>
         <h3>Submit new review</h3>
         <% if flash[:error] %>
+        <div class="alert alert-danger">
             <%= flash[:error] %>
+        </div>
         <% end %>
         <div class="form-group">
             <%= label_tag('Title') %>
@@ -12,7 +14,7 @@
         <div class="form-group">
             <%= label_tag('Review') %>
             <span id="postCharacterCounter"></span>
-            <%= p.text_area :post, :class => "form-control", :maxlength => 1000 %>
+            <%= p.text_area :post, :class => "form-control", :rows => 5, :maxlength => 1000 %>
         </div>
         <div class="form-group">
             <%= label_tag('Rating') %>

@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     var accountBody = $('#accountBody');
 
-    $(document).on("click", "#loadMoreComments", function() {
+    $(accountBody).on("click", "#loadMoreComments", function() {
         var btn = $(this);
 
         var commentId = btn.attr("value");
@@ -15,7 +15,7 @@ $(document).ready(function() {
             error: function(err) {
                 alert(JSON.stringify(err));
             },
-            success: function(res) {
+            complete: function(res) {
                 btn.remove();
                 accountBody.append(res);
             }
@@ -26,10 +26,12 @@ $(document).ready(function() {
         e.preventDefault();
         var btn = $(this);
         var url = btn.attr("href");
+        var userId = btn.attr("rel");
 
         $.ajax({
             url: url,
             type: "post",
+            data: {'user_id': userId},
             dataType: "html",
             error: function(err) {
                 console.log(err);
