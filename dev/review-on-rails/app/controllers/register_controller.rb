@@ -33,6 +33,12 @@ class RegisterController < ApplicationController
             params.require(:user).permit(:name, :email, :username, :password)
         end
 
+        # Checks if the email address already exists in the database
+        def email_exists?(email)
+            user = User.find_by(email: email)
+            return !user.nil?
+        end
+
         # Validates the user's email address and passes an error message if
         # it fails validation
         def validate_email(errors, email)
@@ -42,6 +48,10 @@ class RegisterController < ApplicationController
                 errors.push("<b>Email</b> must not be left blank")
             elsif email.length > 100 # Email must not exceed 100 characters
                 errors.push("<b>Email</b> is too long")
+            end
+            # Checks if the email address already exists
+            if email_exists?(email)
+                errors.push("<b>Email</b> already exists")
             end
 
         end
