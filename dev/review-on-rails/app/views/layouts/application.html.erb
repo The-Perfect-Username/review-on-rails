@@ -17,7 +17,6 @@
           </div>
           <nav>
               <% if session[:user_id] %>
-              <a href="/account">Account</a>
               <a href="/logout">Logout</a>
               <% else %>
               <a href="/register">Register</a>
@@ -35,7 +34,7 @@
                   <a href="/post" data-toggle="tooltip" title="Submit review" data-placement="right">
                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </a>
-                  <a href="account" data-toggle="tooltip" title="Account" data-placement="right">
+                  <a href="/account" data-toggle="tooltip" title="Account" data-placement="right">
                       <i class="fa fa-user" aria-hidden="true"></i>
                   </a>
                   <% end %>
