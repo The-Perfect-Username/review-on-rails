@@ -1,5 +1,4 @@
 <section class="container">
-
     <%= form_for @login, url: "/login/run", method: "post" do |l| %>
         <h3>Login</h3>
         <div class="form-group">
@@ -13,6 +12,10 @@
         <div class="form-group">
             <%= submit_tag("Submit", :class=> "btn btn-success") %>
         </div>
-
+        <% if flash[:message] %>
+        <div class="alert alert-danger">
+            <%= flash[:message] %>
+        </div>
+        <% end %>
     <% end %>
 </section>

@@ -2,6 +2,14 @@
 
     <%= form_for @registration, url: "/register/run", method: "post" do |r| %>
         <h3>Register an account</h3>
+        <% if flash[:error] %>
+            <div class="alert alert-danger">
+                <% flash[:error].each do |i| %>
+                    <%= i.html_safe  %>
+                    <br />
+                <% end %>
+            </div>
+        <% end %>
         <div class="form-group">
             <%= label_tag('Your name') %>
             <%= r.text_field :name, :class => "form-control" %>
