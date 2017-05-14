@@ -6,6 +6,14 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 0 20px;
+
+    span {
+        margin-right: 5px;
+
+        &.email-address {
+            font-weight: 600;
+        }
+    }
 }
 #accountNavContainer {
     border-left: 1px solid #e6e6e6;

@@ -15,7 +15,25 @@
 //= require_tree .
 
 $(function() {
+
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+    var dateTimeElement, utc;
+
+    $(".date-time").each(function(i) {
+        dateTimeElement = $(this);
+        utc = dateTimeElement.text();
+        dateTimeElement.text(convertUTC(utc));
+    });
+
+    function convertUTC(utc) {
+        var utcStr = utc.trim();
+               utc = Math.round(new Date(utcStr).getTime()/1000);
+          var date = moment.unix(utc).format("YYYYMMMDD");
+              date = moment(date, "YYYYMMMDD").fromNow();
+        return date;
+    };
+
 });

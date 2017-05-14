@@ -1,7 +1,18 @@
 <section id="container">
     <div id="accountHeader">
         <h3><%= @user.username %></h3>
-        <p><%= @user.name %> <%= @user.email %> <%= @user.created_at %></p>
+        <p>
+            <span class="name">
+                <%= @user.name %>
+            </span>
+            <span class="email-address">
+                <%= @user.email %>
+            </span>
+            Joined 
+            <span class="date-time">
+                <%= @user.created_at %>
+            </span>
+        </p>
     </div>
     <div id="accountNavContainer">
         <nav>

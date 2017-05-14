@@ -8,9 +8,23 @@
     padding: 20px;
     border-bottom: 1px solid #e6e6e6;
 
-    a {
+    a.post-link {
         color: inherit;
         text-decoration: none;
+        display: inline-block;
+
+        &:hover {
+            color: #0099ff;
+        }
+    }
+
+    a.user-link {
+        color: #337ab7 !important;
+
+        &:hover {
+            color: #23527c !important;
+            text-decoration: none;
+        }
     }
 
     .review-header {
@@ -47,10 +61,5 @@
 }
 
 .review:hover {
-    cursor: pointer;
-    background: #f2f2f2;
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
+    background: #f9f9f9;
 }
