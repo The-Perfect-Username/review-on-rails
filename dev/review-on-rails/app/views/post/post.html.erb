@@ -19,11 +19,11 @@
     </div>
     <div id="comments">
         <% if session[:user_id] %>
-        <%= render partial: "commentForm", :locals => {:comment => @comment} %>
+        <%= render partial: "comment/commentForm", :locals => {:comment => @comment} %>
         <% end %>
         <% unless @comments.empty? %>
         <div id="commentsContainer">
-            <%= render partial: "comments", :locals => {:comments => @comments} %>
+            <%= render partial: "comment/comments", :locals => {:comments => @comments} %>
         </div>
         <% end %>
     </div>

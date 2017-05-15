@@ -16,7 +16,7 @@ class PostController < ApplicationController
   def loadMorePosts
       @posts = Post.joins(:user).select("users.username as username, posts.*").where("posts.id < ?", params[:post_id]).order("posts.id DESC").limit(5)
       respond_to do |format|
-          format.html { render partial: 'index/reviews', :locals => {:posts => @posts} }
+          format.html { render partial: 'post/reviews', :locals => {:posts => @posts} }
       end
   end
 
@@ -24,7 +24,7 @@ class PostController < ApplicationController
       user_id = params[:user_id] ? params[:user_id] : session[:user_id]
       @posts = Post.joins(:user).select("users.username as username, posts.*").where("posts.id < ? AND posts.user_id = ?", params[:post_id], user_id).order("posts.id DESC").limit(5)
       respond_to do |format|
-          format.html { render partial: 'index/reviews', :locals => {:posts => @posts} }
+          format.html { render partial: 'post/reviews', :locals => {:posts => @posts} }
       end
   end
 

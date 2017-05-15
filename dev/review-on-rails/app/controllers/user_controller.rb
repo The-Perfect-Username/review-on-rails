@@ -19,7 +19,7 @@ class UserController < ApplicationController
         end
 
         respond_to do |format|
-            format.html { render partial: 'post/comments', :locals => {:comments => @comments} }
+            format.html { render partial: 'comment/comments', :locals => {:comments => @comments} }
         end
     end
 
@@ -30,7 +30,7 @@ class UserController < ApplicationController
             @posts = Post.joins(:user).select("users.username as username, posts.*").where("users.id = ?", params[:user_id]).order(id: :desc).limit(5)
         end
         respond_to do |format|
-            format.html { render :partial => 'index/reviews', :locals => {:posts => @posts} }
+            format.html { render :partial => 'post/reviews', :locals => {:posts => @posts} }
         end
     end
 
@@ -41,7 +41,7 @@ class UserController < ApplicationController
             @comments = Comment.joins(:user).select("users.username as username,comments.*").where("comments.user_id = ?", params[:user_id]).order("comments.id DESC").limit(5)
         end
         respond_to do |format|
-            format.html { render partial: 'post/comments', :locals => {:comments => @comments} }
+            format.html { render partial: 'comment/comments', :locals => {:comments => @comments} }
         end
     end
 
