@@ -15,7 +15,7 @@ class CommentController < ApplicationController
         end
     end
 
-    def loadMoreComments
+    def load_more_comments
         @comments = Comment.joins(:user).select("users.username as username,comments.*").where("comments.id < ? AND comments.post_id = ?", params[:comment_id], params[:post_id]).order("comments.id DESC").limit(5)
         respond_to do |format|
             format.html { render partial: 'post/comments', :locals => {:comments => @comments} }

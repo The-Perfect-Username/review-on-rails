@@ -11,7 +11,7 @@ class UserController < ApplicationController
         @comments = Comment.joins(:user).select("users.username as username,comments.*").where("comments.user_id = ?", @account.id).order("comments.id DESC").limit(5)
     end
 
-    def loadMoreComments
+    def load_more_comments
         unless params[:id]
             @comments = Comment.joins(:user).select("users.username as username,comments.*").where("comments.id < ?", params[:comment_id]).order("comments.id DESC").limit(5)
         else

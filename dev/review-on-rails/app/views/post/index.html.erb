@@ -3,7 +3,10 @@
         <h3>Submit new review</h3>
         <% if flash[:error] %>
         <div class="alert alert-danger">
-            <%= flash[:error] %>
+            <% flash[:error].each do |f| %>
+                <%= f.html_safe %>
+                <br />
+            <% end %>
         </div>
         <% end %>
         <div class="form-group">
