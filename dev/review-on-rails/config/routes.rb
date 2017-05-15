@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get 'post/:id', to: "post#post"
     post 'post/create', to: "post#create"
     post 'post/destroy', to: "post#destory"
+    post 'reviews/loadmore', to: "post#loadMorePosts"
+    post 'account/reviews/loadmore', to: "post#loadMorePostsByUser"
 
     post 'comment/create', to: "comment#create"
     post '/comments/loadmore', to: "comment#loadMoreComments"

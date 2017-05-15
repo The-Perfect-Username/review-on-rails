@@ -25,3 +25,6 @@
     </div>
 </div>
 <% end %>
+<% unless posts.length < 5 %>
+    <button id="loadMorePosts" value="<%= posts.last.id %>" class="btn btn-default" style="width: 100% !important; margin-top: 10px;">Load more</button>
+<% end %>

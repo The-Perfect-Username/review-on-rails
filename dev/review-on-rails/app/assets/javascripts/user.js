@@ -22,6 +22,27 @@ $(document).ready(function() {
         });
     });
 
+
+    $(accountBody).on("click", "#loadMorePosts", function() {
+        var btn = $(this);
+
+        var postId = btn.attr("value");
+
+        $.ajax({
+            url: "/account/reviews/loadmore",
+            type: "post",
+            data: {"post_id": postId},
+            dataType: "html",
+            error: function(err) {
+                alert(JSON.stringify(err));
+            },
+            success: function(res) {
+                btn.remove();
+                accountBody.append(res);
+            }
+        });
+    });
+
     $(document).on("click", "#accountNavContainer a", function(e) {
         e.preventDefault();
         var btn = $(this);

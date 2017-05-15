@@ -25,9 +25,9 @@ class UserController < ApplicationController
 
     def reviews
         unless params[:user_id]
-            @posts = Post.joins(:user).select("users.username as username, posts.*").where("users.id = ?", session[:user_id]).order(id: :desc)
+            @posts = Post.joins(:user).select("users.username as username, posts.*").where("users.id = ?", session[:user_id]).order(id: :desc).limit(5)
         else
-            @posts = Post.joins(:user).select("users.username as username, posts.*").where("users.id = ?", params[:user_id]).order(id: :desc)
+            @posts = Post.joins(:user).select("users.username as username, posts.*").where("users.id = ?", params[:user_id]).order(id: :desc).limit(5)
         end
         respond_to do |format|
             format.html { render :partial => 'index/reviews', :locals => {:posts => @posts} }

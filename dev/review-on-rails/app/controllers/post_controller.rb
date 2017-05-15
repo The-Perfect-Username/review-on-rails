@@ -1,6 +1,6 @@
 class PostController < ApplicationController
 
-    skip_before_action :require_login, only: :post
+    skip_before_action :require_login, :only => [:post, :loadMorePosts]
 
   def index
       @post = Post.new
@@ -11,6 +11,21 @@ class PostController < ApplicationController
       @comment = Comment.new
       @comments = Comment.joins(:user).select("users.username as username,comments.*").where(post_id: params[:id]).order("comments.id DESC").limit(5)
       @numberOfComments = Comment.where(post_id: params[:id]).length
+  end
+
+  def loadMorePosts
+      @posts = Post.joins(:user).select("users.username as username, posts.*").where("posts.id < ?", params[:post_id]).order("posts.id DESC").limit(5)
+      respond_to do |format|
+          format.html { render partial: 'index/reviews', :locals => {:posts => @posts} }
+      end
+  end
+
+  def loadMorePostsByUser
+      user_id = params[:user_id] ? params[:user_id] : session[:user_id]
+      @posts = Post.joins(:user).select("users.username as username, posts.*").where("posts.id < ? AND posts.user_id = ?", params[:post_id], user_id).order("posts.id DESC").limit(5)
+      respond_to do |format|
+          format.html { render partial: 'index/reviews', :locals => {:posts => @posts} }
+      end
   end
 
   def create
