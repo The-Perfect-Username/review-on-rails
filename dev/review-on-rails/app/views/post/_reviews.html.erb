@@ -20,7 +20,7 @@
     </div>
     <div class="review-body">
         <p>
-            <%= if x.post.length <= 200 then x.post else "#{x.post[0..200]}..." end %>
+            <%= x.post.length <= 200 ? x.post : "#{x.post[0..200]}..." %>
         </p>
     </div>
 </div>

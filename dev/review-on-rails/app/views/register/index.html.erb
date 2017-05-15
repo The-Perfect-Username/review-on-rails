@@ -1,6 +1,6 @@
 <section class="container">
 
-    <%= form_for @registration, url: "/register/run", method: "post" do |r| %>
+    <%= form_for @registration, url: "/register/run", method: "post", :html => {:id => "register-form", :class => "user-form"} do |r| %>
         <h3>Register an account</h3>
         <% if flash[:error] %>
             <div class="alert alert-danger">
@@ -27,7 +27,7 @@
             <%= r.password_field :password, :class => "form-control" %>
         </div>
         <div class="form-group">
-            <%= submit_tag("Submit", :class=> "btn btn-success") %>
+            <%= submit_tag("Submit", :class=> "btn btn-info") %>
         </div>
 
     <% end %>

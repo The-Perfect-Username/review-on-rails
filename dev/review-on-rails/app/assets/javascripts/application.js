@@ -31,8 +31,8 @@ $(function() {
     function convertUTC(utc) {
         var utcStr = utc.trim();
                utc = Math.round(new Date(utcStr).getTime()/1000);
-          var date = moment.unix(utc).format("YYYYMMMDD");
-              date = moment(date, "YYYYMMMDD").fromNow();
+          var date = moment.unix(utc).format("YYYY-MMM-DD H:mm:ss");
+              date = moment(date, "YYYY-MMM-DD H:mm:ss").fromNow();
         return date;
     };
 

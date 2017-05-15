@@ -15,7 +15,7 @@
     </ul>
     <hr />
     <div class="post">
-        <p><%= simple_format(@post.post) %></p>
+        <p><%= @post.post.empty? ?  simple_format("<span class='tardy-response'>No review provided</span>") : simple_format(@post.post) %></p>
     </div>
     <div id="comments">
         <% if session[:user_id] %>
