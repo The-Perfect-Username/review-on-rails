@@ -1,21 +1,34 @@
 class PostController < ApplicationController
 
-    skip_before_action :require_login, :only => [:post, :loadMorePosts]
+    skip_before_action :require_login, :only => [:post, :load_more_posts, :load_more_posts_by_user]
 
   def index
       @post = Post.new
   end
 
   def post
-      @post = Post.joins(:user).select("users.username as username, posts.*").where(id: params[:id]).first
+      @post = Post.joins(:user).
+                   select("users.username as username, posts.*").
+                   where(id: params[:id]).
+                   first
       @comment = Comment.new
-      @comments = Comment.joins(:user).select("users.username as username,comments.*").where(post_id: params[:id]).order("comments.id DESC").limit(5)
+      @comments = Comment.joins(:user).
+                          select("users.username as username,comments.*").
+                          where(post_id: params[:id]).
+                          order("comments.id DESC").
+                          limit(5)
+
       @numberOfComments = Comment.where(post_id: params[:id]).length
   end
 
   # Load the next 5 reviews on the main page
   def load_more_posts
-      @posts = Post.joins(:user).select("users.username as username, posts.*").where("posts.id < ?", params[:post_id]).order("posts.id DESC").limit(5)
+      @posts = Post.joins(:user).
+                    select("users.username as username, posts.*").
+                    where("posts.id < ?", params[:post_id]).
+                    order("posts.id DESC").
+                    limit(5)
+
       respond_to do |format|
           format.html { render partial: 'post/reviews', :locals => {:posts => @posts} }
       end
@@ -26,7 +39,11 @@ class PostController < ApplicationController
       # Either the user ID of another user's account or the user's own ID
       user_id = params[:user_id] ? params[:user_id] : session[:user_id]
       # Get the next 5 reviews
-      @posts = Post.joins(:user).select("users.username as username, posts.*").where("posts.id < ? AND posts.user_id = ?", params[:post_id], user_id).order("posts.id DESC").limit(5)
+      @posts = Post.joins(:user).
+                    select("users.username as username, posts.*").
+                    where("posts.id < ? AND posts.user_id = ?", params[:post_id], user_id).
+                    order("posts.id DESC").
+                    limit(5)
       # Return rendered html
       respond_to do |format|
           format.html { render partial: 'post/reviews', :locals => {:posts => @posts} }
