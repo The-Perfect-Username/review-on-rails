@@ -8,5 +8,6 @@ of 1 to 5 stars. Users must register an account before being able to submit revi
 
 # Installation
 * Download folder review-on-rails in dev
-* Run rake db:migrate
-* Start server with rails s
+* Run **bundle** to install dependencies
+* Run **rake db:migrate** to create database
+* Start server **rails s**
