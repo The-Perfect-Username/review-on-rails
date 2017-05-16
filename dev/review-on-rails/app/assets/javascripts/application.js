@@ -15,19 +15,22 @@
 //= require_tree .
 
 $(function() {
-
+    
+    // Bootstrap tool-tip
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
 
     var dateTimeElement, utc;
 
+    // Convert all UTC times to {time} ago
     $(".date-time").each(function(i) {
         dateTimeElement = $(this);
         utc = dateTimeElement.text();
         dateTimeElement.text(convertUTC(utc));
     });
 
+    // Convert UTC format to user friendly time
     function convertUTC(utc) {
         var utcStr = utc.trim();
                utc = Math.round(new Date(utcStr).getTime()/1000);

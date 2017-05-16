@@ -2,6 +2,7 @@ $(document).ready(function() {
 
     var accountBody = $('#accountBody');
 
+    // Loads more comments for the user account
     $(accountBody).on("click", "#loadMoreComments", function() {
         var btn = $(this);
 
@@ -22,7 +23,7 @@ $(document).ready(function() {
         });
     });
 
-
+    // Loads more posts for the user account
     $(accountBody).on("click", "#loadMorePosts", function() {
         var btn = $(this);
 
@@ -43,6 +44,7 @@ $(document).ready(function() {
         });
     });
 
+    // Shows the list of comments or reviews made by the user
     $(document).on("click", "#accountNavContainer a", function(e) {
         e.preventDefault();
         var btn = $(this);

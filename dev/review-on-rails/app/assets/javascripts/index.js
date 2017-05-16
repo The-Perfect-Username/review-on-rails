@@ -1,6 +1,8 @@
 $(function() {
     var reviewsFeed = $('#reviewsFeed');
 
+    // Sends a request to the server to load more reviews
+    // made by the community
     $(reviewsFeed).on("click", "#loadMorePosts", function() {
         var btn = $(this);
 
