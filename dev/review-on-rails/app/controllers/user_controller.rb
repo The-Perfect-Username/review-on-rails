@@ -2,20 +2,13 @@ class UserController < ApplicationController
     skip_before_action :require_login, :only => [:index, :load_more_comments, :reviews, :comments]
 
     def index
-        @user = User.find(params[:id])
+        user_id = params[:id] ? params[:id] : session[:user_id]
+        @user = User.find(user_id)
         @comments = Comment.joins(:user).
                             select("users.username as username,comments.*").
                             where("comments.user_id = ?", @user.id).
                             order("comments.id DESC").
                             limit(5)
-    end
-
-    def account
-        @account = User.find(session[:user_id])
-        @comments = Comment.joins(:user).
-                            select("users.username as username,comments.*").
-                            where("comments.user_id = ?", @account.id).
-                            order("comments.id DESC").limit(5)
     end
 
     def load_more_comments

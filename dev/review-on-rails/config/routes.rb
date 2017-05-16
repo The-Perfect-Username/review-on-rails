@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-    get 'account', to: "user#account"
+    get 'account', to: "user#index"
     get 'user/:id', to: "user#index"
     get 'logout', to: "user#logout"
 
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     post 'account/reviews/loadmore', to: "post#load_more_posts_by_user"
 
     post 'comment/create', to: "comment#create"
-    post '/comments/loadmore', to: "comment#load_more_comments"
+    post 'comments/loadmore', to: "comment#load_more_comments"
 
     resources :users
     get 'register', to: "register#index"
