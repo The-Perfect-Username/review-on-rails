@@ -1,20 +1,24 @@
 class CommentController < ApplicationController
 
+    # Create a new comment
     def create
         @comment = Comment.new(comment_params)
+        # Calidate comment before submission
         if (comment_is_valid?(comment_params[:comment]))
+            # Save comment and reload page
             if @comment.save
                 redirect_to "/post/#{comment_params[:post_id]}"
-            else
-                flash[:error] = "Unable to submit comment"
+            else # Dsiplay error if enable to submit
+                flash[:error] = "Something went wrong! Unable to submit comment."
                 redirect_to "/post/#{comment_params[:post_id]}"
             end
-        else
+        else # Display validation errors
             flash[:error] = error_message(comment_params[:comment])
             redirect_to "/post/#{comment_params[:post_id]}"
         end
     end
 
+    # Load the neext 5 comments in the post
     def load_more_comments
         @comments = Comment.joins(:user).
                             select("users.username as username,comments.*").

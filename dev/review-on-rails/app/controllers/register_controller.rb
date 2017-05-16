@@ -11,18 +11,18 @@ class RegisterController < ApplicationController
     def run
       @registration = User.new(registration_params)
       # Error message array
-      errors = []
+      @@errors = []
       # Parameter validation
-      validate_name(errors, registration_params[:name])
-      validate_username(errors, registration_params[:username])
-      validate_email(errors, registration_params[:email])
-      validate_password(errors, registration_params[:password])
+      validate_name(registration_params[:name])
+      validate_username(registration_params[:username])
+      validate_email(registration_params[:email])
+      validate_password(registration_params[:password])
 
-      if errors.length == 0 && @registration.save
+      if @@errors.empty? && @registration.save
           session[:user_id] = @registration.id
           redirect_to :controller => 'index', :action => 'index'
       else
-          flash[:error] = errors
+          flash[:error] = @@errors
           redirect_to :controller => 'register', :action => 'index'
       end
     end
@@ -41,17 +41,17 @@ class RegisterController < ApplicationController
 
         # Validates the user's email address and passes an error message if
         # it fails validation
-        def validate_email(errors, email)
+        def validate_email(email)
             if email.nil? # Email must not be nil
-                errors.push("<b>Email</b> must not be left blank")
+                @@errors.push("<b>Email</b> must not be left blank")
             elsif valid_email_format?(email) != 0 # Email must have the correct format
-                errors.push("<b>Email</b> must not be left blank")
+                @@errors.push("<b>Email</b> must not be left blank")
             elsif email.length > 100 # Email must not exceed 100 characters
-                errors.push("<b>Email</b> is too long")
+                @@errors.push("<b>Email</b> is too long")
             end
             # Checks if the email address already exists
             if email_exists?(email)
-                errors.push("<b>Email</b> already exists")
+                @@errors.push("<b>Email</b> already exists")
             end
 
         end
@@ -72,41 +72,41 @@ class RegisterController < ApplicationController
 
         # Validates the user's password and passes an error message if
         # it fails validation
-        def validate_password(errors, password)
+        def validate_password(password)
             # password must have at least 6 characters
             if password.nil?
-                errors.push("<b>Password</b> must have at least 6 characters")
+                @@errors.push("<b>Password</b> must have at least 6 characters")
             elsif password.length < 6
-                errors.push("<b>Password</b> must have at least 6 characters")
+                @@errors.push("<b>Password</b> must have at least 6 characters")
             end
         end
 
         # Validates the user's name and passes an error message if
         # it fails validation
-        def validate_name(errors, name)
+        def validate_name(name)
             # Checks if input is nil
             if name.nil?
-                errors.push("<b>Name</b> must not be left blank")
+                @@errors.push("<b>Name</b> must not be left blank")
             elsif name.length < 2 # name must be at least 2 characters
-                errors.push("<b>Name</b> must have at least 2 characters")
+                @@errors.push("<b>Name</b> must have at least 2 characters")
             elsif name.length > 100 # name must be at most 100 characters
-                errors.push("<b>Name</b> is too long")
+                @@errors.push("<b>Name</b> is too long")
             end
             # Name must only contain letters, whitespace, and hyphens
             if valid_name_format?(name) != 0
-                errors.push("<b>Name</b> must ony contain letters, whitespace, and hyphens")
+                @@errors.push("<b>Name</b> must ony contain letters, whitespace, and hyphens")
             end
         end
 
         # Validates the user's username and passes an error message if
         # it fails validation
-        def validate_username(errors, username)
+        def validate_username(username)
             if username.nil? # username must not be nil
-                errors.push("<b>Username</b> must not be left blank")
+                @@errors.push("<b>Username</b> must not be left blank")
             elsif username.length < 2 # username must have at least 2 characters
-                errors.push("<b>Username</b> must have at least 2 characters")
+                @@errors.push("<b>Username</b> must have at least 2 characters")
             elsif username.length > 25 # username must hat at most 100 characters
-                errors.push("<b>Username</b> must not exceed 25 characters")
+                @@errors.push("<b>Username</b> must not exceed 25 characters")
             end
         end
 
