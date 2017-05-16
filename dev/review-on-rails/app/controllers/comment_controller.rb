@@ -26,7 +26,7 @@ class CommentController < ApplicationController
                             order("comments.id DESC").
                             limit(5)
         respond_to do |format|
-            format.html { render partial: 'post/comments', :locals => {:comments => @comments} }
+            format.html { render partial: 'comment/comments', :locals => {:comments => @comments} }
         end
     end
 

@@ -1,3 +1,6 @@
+<% if posts.empty? %>
+<p class="load-error">Unable to load more reviews</p>
+<% end %>
 <% posts.each do |x| %>
 <div class="review list-display">
     <div class="review-header">

@@ -18,3 +18,10 @@
      color: #bbb;
      text-align: center;
  }
+
+ p.load-error {
+     text-align: center;
+     margin-top: 10px;
+     font-size: 0.9em;
+     color: #999;
+ }

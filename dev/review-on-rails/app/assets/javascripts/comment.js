@@ -35,7 +35,7 @@ $(document).on('ready page:load', function(){
             error: function(err) {
                 alert(JSON.stringify(err));
             },
-            complete: function(res) {
+            success: function(res) {
                 btn.remove();
                 commentsContainer.append(res);
             }

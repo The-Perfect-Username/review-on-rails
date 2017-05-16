@@ -15,7 +15,7 @@ $(document).ready(function() {
             error: function(err) {
                 alert(JSON.stringify(err));
             },
-            complete: function(res) {
+            success: function(res) {
                 btn.remove();
                 accountBody.append(res);
             }

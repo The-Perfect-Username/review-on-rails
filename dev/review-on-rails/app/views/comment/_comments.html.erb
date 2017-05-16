@@ -1,3 +1,6 @@
+<% if comments.empty? %>
+<p class="load-error">Unable to load more comments</p>
+<% end %>
 <% comments.each do |c| %>
     <div class="comment">
         <div class="comment-header">
