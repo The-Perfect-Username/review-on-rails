@@ -1,5 +1,9 @@
 <section id="container">
     <div id="reviewsFeed">
+        <% if @posts.empty? %>
+        <%= render :partial => 'post/noreviews' %>
+        <% else %>
         <%= render :partial => 'post/reviews', :locals => {:posts => @posts} %>
+        <% end %>
     </div>
 </section>

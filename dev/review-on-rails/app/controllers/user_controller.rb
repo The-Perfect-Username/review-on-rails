@@ -46,8 +46,14 @@ class UserController < ApplicationController
                       order(id: :desc).
                       limit(5)
 
+          if @posts.empty?
+              partial = render :partial => 'post/noreviews'
+          else
+              psrtial = render :partial => 'post/reviews', :locals => {:posts => @posts}
+          end
+
         respond_to do |format|
-            format.html { render :partial => 'post/reviews', :locals => {:posts => @posts} }
+            format.html { partial }
         end
     end
 
@@ -57,9 +63,15 @@ class UserController < ApplicationController
                             select("users.username as username,comments.*").
                             where("comments.user_id = ?", user_id).
                             order("comments.id DESC").limit(5)
-                            
+
+        if @comments.empty?
+            partial = render partial: 'comment/noComments'
+        else
+            partial = render partial: 'comment/comments', :locals => {:comments => @comments}
+        end
+
         respond_to do |format|
-            format.html { render partial: 'comment/comments', :locals => {:comments => @comments} }
+            format.html { partial }
         end
     end
 
