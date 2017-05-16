@@ -5,3 +5,8 @@ of 1 to 5 stars. Users must register an account before being able to submit revi
 # Specifications
 * Ruby 2.2.4p230 (2015-12-16 revision 53155) [i386-mingw32]
 * Rails 5.0.2
+
+# Installation
+* Download folder review-on-rails in dev
+* Run rake db:migrate
+* Start server with rails s
